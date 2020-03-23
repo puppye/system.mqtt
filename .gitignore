@@ -2,6 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/src/System.Agent/obj
+/src/*/obj
 /.vs/System.MQTT
-/src/System.Portal/obj
+/src/*/bin

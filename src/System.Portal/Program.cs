@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Auth;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace System.Portal
 {
     class Program
     {
+
         static async Task Main(string[] args)
         {
 
@@ -25,7 +27,13 @@ namespace System.Portal
                 {
                     configureLogging.AddConsole();
                 })
+                .ConfigureServices(services =>
+                {
+                    services.AddAuth("Data Source=app.db");
+                })
                 .Build();
+
+
 
             await host.RunAsync();
         }
