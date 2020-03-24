@@ -1,15 +1,17 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Auth;
 using System.IO;
+using System.Logging;
 using System.Threading.Tasks;
 
 namespace System.Portal
 {
     class Program
     {
+
+        private static ILogger logger;
 
         static async Task Main(string[] args)
         {
@@ -30,11 +32,16 @@ namespace System.Portal
                 .ConfigureServices(services =>
                 {
                     services.AddAuth("Data Source=app.db");
+                    services.AddNLogFactory();
                 })
                 .Build();
 
+            //using (var service = host.Services.GetService<ILoggerFactory>())
+            //{
+            //    logger = service.CreateLogger("host");
+            //}
 
-
+            // await host.WaitForShutdownAsync();
             await host.RunAsync();
         }
     }

@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\System.Agent\System.Agent.csproj" />
     <ProjectReference Include="..\System.Auth\System.Auth.csproj" />
+    <ProjectReference Include="..\System.Logging\System.Logging.csproj" />
   </ItemGroup>
   
   <!-- import auth relative dependencies -->
