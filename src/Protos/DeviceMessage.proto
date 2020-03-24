@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package System.Protos;
+
+service Counter {
+  rpc StartCounter (google.protobuf.Empty) returns (stream CounterResponse);
+}
+
+message CounterResponse {
+  int32 count = 1;
+}
