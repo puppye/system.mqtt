@@ -15,16 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Auth", "src\System.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Logging", "src\System.Logging\System.Logging.csproj", "{02D08674-4564-4BA5-AB8F-09AED2EF1408}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.BlazorUI", "src\System.ManagerUI\System.BlazorUI.csproj", "{817AFACF-1139-4A12-9B6B-98423C15500D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.BlazorUI", "src\System.BlazorUI\System.BlazorUI.csproj", "{817AFACF-1139-4A12-9B6B-98423C15500D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Protos", "src\System.Protos\System.Protos.csproj", "{648BDB7C-53F0-4827-8145-3B70724A2208}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Protos", "Protos", "{8D01ECE3-5262-401A-884B-6B631BEA701C}"
-	ProjectSection(SolutionItems) = preProject
-		src\Protos\Messages.proto = src\Protos\Messages.proto
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Dashboard", "src\System.Dashboard\System.Dashboard.csproj", "{FA0C8354-4992-4A13-8706-DEE0EF3DBA08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.XUnitTest", "src\System.XUnitTest\System.XUnitTest.csproj", "{C4983B44-6220-4265-BC7A-F772FFA5B645}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +63,10 @@ Global
 		{FA0C8354-4992-4A13-8706-DEE0EF3DBA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA0C8354-4992-4A13-8706-DEE0EF3DBA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA0C8354-4992-4A13-8706-DEE0EF3DBA08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4983B44-6220-4265-BC7A-F772FFA5B645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4983B44-6220-4265-BC7A-F772FFA5B645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4983B44-6220-4265-BC7A-F772FFA5B645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4983B44-6220-4265-BC7A-F772FFA5B645}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +81,7 @@ Global
 		{648BDB7C-53F0-4827-8145-3B70724A2208} = {750E102B-BA5D-4B9C-8397-C43DAA25BE17}
 		{8D01ECE3-5262-401A-884B-6B631BEA701C} = {750E102B-BA5D-4B9C-8397-C43DAA25BE17}
 		{FA0C8354-4992-4A13-8706-DEE0EF3DBA08} = {750E102B-BA5D-4B9C-8397-C43DAA25BE17}
+		{C4983B44-6220-4265-BC7A-F772FFA5B645} = {750E102B-BA5D-4B9C-8397-C43DAA25BE17}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21ECAF1C-0830-4A7D-AD48-16823E0FA025}
