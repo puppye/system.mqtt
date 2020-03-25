@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Protos", "Protos", "{8D01EC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Dashboard", "src\System.Dashboard\System.Dashboard.csproj", "{FA0C8354-4992-4A13-8706-DEE0EF3DBA08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.XUnitTest", "src\System.XUnitTest\System.XUnitTest.csproj", "{C4983B44-6220-4265-BC7A-F772FFA5B645}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.XUnitTest", "src\System.XUnitTest\System.XUnitTest.csproj", "{C4983B44-6220-4265-BC7A-F772FFA5B645}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

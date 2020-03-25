@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Auth;
@@ -16,33 +17,60 @@ namespace System.Portal
         static async Task Main(string[] args)
         {
 
-            IHost host = new HostBuilder()
-                .ConfigureAppConfiguration((context, Configuration) =>
-                {
-                    Configuration.SetBasePath(Directory.GetCurrentDirectory());
-                    Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-                    Configuration.AddJsonFile($"appsettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true);
-                    //configApp.AddEnvironmentVariables(prefix: "PREFIX_");
-                    Configuration.AddCommandLine(args);
-                })
-                .ConfigureLogging(configureLogging =>
-                {
-                    configureLogging.AddConsole();
-                })
-                .ConfigureServices(services =>
-                {
-                    services.AddAuth("Data Source=app.db");
-                    services.AddNLogFactory();
-                })
-                .Build();
+            //IHost host = new HostBuilder()
+            //    .ConfigureAppConfiguration((context, Configuration) =>
+            //    {
+            //        Configuration.SetBasePath(Directory.GetCurrentDirectory());
+            //        Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            //        Configuration.AddJsonFile($"appsettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true);
+            //        //configApp.AddEnvironmentVariables(prefix: "PREFIX_");
+            //        Configuration.AddCommandLine(args);
+            //    })
+            //    .ConfigureLogging(configureLogging =>
+            //    {
+            //        configureLogging.AddConsole();
+            //    })
+            //    .ConfigureServices(services =>
+            //    {
+            //        services.AddAuth("Data Source=app.db");
+            //        services.AddNLogFactory();
+            //    })
+            //    .Build();
 
-            //using (var service = host.Services.GetService<ILoggerFactory>())
-            //{
-            //    logger = service.CreateLogger("host");
-            //}
+            ////using (var service = host.Services.GetService<ILoggerFactory>())
+            ////{
+            ////    logger = service.CreateLogger("host");
+            ////}
 
-            // await host.WaitForShutdownAsync();
-            await host.RunAsync();
+            //// await host.WaitForShutdownAsync();
+            //await host.RunAsync();
+
+            await CreateMultiHostBuilder(args).Build().RunAsync();
+        }
+
+        private static IHostBuilder CreateMultiHostBuilder(string[] args)
+        {
+            var builder = Host.CreateDefaultBuilder(args)
+                               .ConfigureWebHost(webBuilder =>
+                               {
+                                   webBuilder.UseKestrel(options =>
+                                   {
+                                       // Listen on 8080 (ipv4 and ipv6)
+                                       // options.ListenLocalhost(8080);
+
+                                       // Listen on 8085 (ipv4 and ipv6)
+                                       options.ListenAnyIP(8085, listenOptions =>
+                                       {
+                                           // Write logic that runs before the TLS handshake
+                                           listenOptions.UseMqttFilter();
+
+                                           // Do HTTPS
+                                           // listenOptions.UseHttps();
+                                       });
+                                   })
+                                   .UseStartup<Startup>();
+                               });
+            return builder;
         }
     }
 }
